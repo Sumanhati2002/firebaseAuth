@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:sample_firebase/crud_firebase/database_firebase.dart';
 
 import 'email_auth.dart';
 
@@ -26,6 +28,16 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.light,
           primarySwatch: Colors.purple,
         ),
-        home: const EmailAuth());
+        home: StreamBuilder(
+          stream: FirebaseAuth.instance.authStateChanges(),
+          builder: (context,snapshot){
+            if(snapshot.hasData){
+              return const DatabaseOption();
+            }
+            else{
+              return const EmailAuth();
+            }
+          },
+        ));
   }
 }

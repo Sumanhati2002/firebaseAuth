@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sample_firebase/auth_func.dart';
 
@@ -89,9 +91,11 @@ class _EmailAuthState extends State<EmailAuth> {
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {
-                      if(_formKey.currentState!.validate()){
+                      if (_formKey.currentState!.validate()) {
                         _formKey.currentState!.save();
-                        isLogin? signin(email, password): signup(email, password);
+                        isLogin
+                            ? signin(email, password)
+                            : signup(email, password);
                       }
                     },
                     style: ElevatedButton.styleFrom(
