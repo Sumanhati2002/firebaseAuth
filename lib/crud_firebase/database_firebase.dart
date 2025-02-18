@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sample_firebase/crud_firebase/database_func.dart';
+import 'package:sample_firebase/crud_firebase/pets.dart';
 
 class DatabaseOption extends StatefulWidget {
   const DatabaseOption({super.key});
@@ -35,13 +36,22 @@ class _DatabaseOptionState extends State<DatabaseOption> {
                   create('pets', 'tom', 'jacki', "dog", 10);
                 },
                 child: const Text('Create')),
-            ElevatedButton(onPressed: () {}, child: const Text('Read')),
-            ElevatedButton(onPressed: () {
-              updateData('pets', 'kitty', 'age', 12);
-            }, child: const Text('Update')),
-            ElevatedButton(onPressed: () {
-              deleteData('pets', 'tom');
-            }, child: const Text('Delete'))
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => PetsList()));
+                },
+                child: const Text('Read')),
+            ElevatedButton(
+                onPressed: () {
+                  updateData('pets', 'kitty', 'age', 9);
+                },
+                child: const Text('Update')),
+            ElevatedButton(
+                onPressed: () {
+                  deleteData('pets', 'tom');
+                },
+                child: const Text('Delete'))
           ],
         ),
       ),

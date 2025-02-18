@@ -10,10 +10,10 @@ create(String colName, docName, name, animal, int age) async {
 }
 
 //read data
-readData(String colName, docName) async {
+/*readData(String colName, docName) async {
   await FirebaseFirestore.instance.collection(colName).doc(docName).get();
   print('value get');
-}
+}*/
 
 //update data
 updateData(String colName, docName, fieldName, var newFieldValue) async {
